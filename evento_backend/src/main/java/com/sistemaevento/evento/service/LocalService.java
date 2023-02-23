@@ -17,4 +17,7 @@ public class LocalService {
 		
 	}
 
+	public void alterarLocal(Local local) {
+		repository.save(local);
+	}
 }

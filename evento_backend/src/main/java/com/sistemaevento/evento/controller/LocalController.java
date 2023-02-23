@@ -30,4 +30,14 @@ public class LocalController {
 		}
 	}
 
+	@PostMapping(value = "/alterar")
+	private ResponseEntity alterarLocal (@RequestBody Local local) {
+		try {
+			service.alterarLocal(local);
+			return new ResponseEntity<>(null, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return  new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+
 }
