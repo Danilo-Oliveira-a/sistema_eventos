@@ -15,9 +15,6 @@ public class LocalService {
 	public void incluirLocal(Local local) {
 		repository.save(local);
 	}
-	public void alterarLocal(Local local) {
-		repository.save(local);
-	}
 
 	public void alterarLocal(Local local) {
 		repository.save(local);
