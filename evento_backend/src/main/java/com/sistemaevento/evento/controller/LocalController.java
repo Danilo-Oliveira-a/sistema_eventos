@@ -17,12 +17,12 @@ public class LocalController {
 	private LocalService service;
 	
 	@PostMapping(value = "/incluir")
-	private ResponseEntity incluirLocal (@RequestBody Local local) {
+	private ResponseEntity incluirLocal(@RequestBody Local local) {
 		try {
 			service.incluirLocal(local);
-			return new ResponseEntity<>(null, HttpStatus.CREATED);
+			return  ResponseEntity.ok().build();
 		} catch (Exception e) {
-			return  new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+			return  ResponseEntity.badRequest().build();
 		}
 	}
 
@@ -30,9 +30,20 @@ public class LocalController {
 	private ResponseEntity alterarLocal (@RequestBody Local local) {
 		try {
 			service.alterarLocal(local);
-			return new ResponseEntity<>(null, HttpStatus.OK);
+			return  ResponseEntity.ok().build();
 		} catch (Exception e) {
-			return  new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+			return  ResponseEntity.badRequest().build();
+		}
+	}
+
+	@GetMapping(value="/detalhe/{id}")
+	private ResponseEntity<Local> detalhe (@PathVariable long id) {
+		Local local = null;
+		try {
+			local = service.consultarDetalhe(id);
+			return  ResponseEntity.ok(local);
+		} catch (Exception e) {
+			return  ResponseEntity.badRequest().body(local);
 		}
 	}
 

@@ -8,6 +8,6 @@ import com.sistemaevento.evento.model.Local;
 @Repository
 public interface LocalRepository extends JpaRepository<Local, Long>{
 	
-	
+	Local findById(long id);
 
 }
