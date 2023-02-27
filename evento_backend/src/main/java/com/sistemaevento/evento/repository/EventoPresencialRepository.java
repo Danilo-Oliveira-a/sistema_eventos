@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EventoPresencialRepository extends JpaRepository<EventoPresencial, Long> {
 
+    void alterar(EventoPresencial evento);
 }

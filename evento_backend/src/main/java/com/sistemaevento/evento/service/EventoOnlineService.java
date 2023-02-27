@@ -23,4 +23,8 @@ public class EventoOnlineService {
         evento.setTipoEvento(TipoEvento.ONLINE);
         repository.save(evento);
     }
+
+    public void alterar(EventoOnline evento) {
+        repository.save(evento);
+    }
 }

@@ -23,4 +23,8 @@ public class EventoPresencialService {
         evento.setTipoEvento(TipoEvento.PRESENCIAL);
         repository.save(evento);
     }
+
+    public void alterar(EventoPresencial evento) {
+        repository.alterar(evento);
+    }
 }

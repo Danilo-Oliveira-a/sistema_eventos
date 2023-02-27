@@ -3,6 +3,7 @@ package com.sistemaevento.evento.controller;
 import com.sistemaevento.evento.model.EventoOnline;
 import com.sistemaevento.evento.model.EventoPresencial;
 import com.sistemaevento.evento.model.Funcionario;
+import com.sistemaevento.evento.model.Local;
 import com.sistemaevento.evento.service.EventoOnlineService;
 import com.sistemaevento.evento.service.EventoPresencialService;
 import com.sistemaevento.evento.service.FuncionarioService;
@@ -58,6 +59,26 @@ public class EventoController {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         catch (Exception e){
+            return  ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping(value = "/alterarEventoOnline")
+    public ResponseEntity alterarEventoOnline(@RequestBody EventoOnline evento){
+        try {
+            eventoOnlineService.alterar(evento);
+            return  ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return  ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping(value = "/alterarEventoPresencial")
+    public ResponseEntity alterarEventoPresencial(@RequestBody EventoPresencial evento){
+        try {
+            eventoPresencialService.alterar(evento);
+            return  ResponseEntity.ok().build();
+        } catch (Exception e) {
             return  ResponseEntity.badRequest().build();
         }
     }
