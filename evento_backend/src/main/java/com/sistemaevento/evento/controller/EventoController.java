@@ -25,29 +25,29 @@ public class EventoController {
     @GetMapping(value = "/online")
     public ResponseEntity<List<EventoOnline>>listarEventosOnline(){
         try{
-           return new ResponseEntity(eventoOnlineService.listar(), HttpStatus.OK);
+           return  ResponseEntity.ok(eventoOnlineService.listar());
         }
         catch (Exception e){
-            return  new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+            return  ResponseEntity.badRequest().build();
         }
     }
     @GetMapping(value = "/presencial")
     public ResponseEntity<List<EventoPresencial>>listarEventosPresenciais(){
         try{
-            return new ResponseEntity(eventoPresencialService.listar(), HttpStatus.OK);
+            return ResponseEntity.ok(eventoPresencialService.listar());
         }
         catch (Exception e){
-            return  new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+            return  ResponseEntity.badRequest().build();
         }
     }
     @PostMapping(value = "/online/incluir")
     public ResponseEntity incluirEventoOnline(@RequestBody EventoOnline evento){
         try{
             eventoOnlineService.incuir(evento);
-            return new ResponseEntity(null, HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         catch (Exception e){
-            return  new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+            return  ResponseEntity.badRequest().build();
         }
     }
 
@@ -55,10 +55,10 @@ public class EventoController {
     public ResponseEntity incluirEventoPresencial(@RequestBody EventoPresencial evento){
         try{
             eventoPresencialService.incuir(evento);
-            return new ResponseEntity(null, HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         catch (Exception e){
-            return  new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+            return  ResponseEntity.badRequest().build();
         }
     }
 

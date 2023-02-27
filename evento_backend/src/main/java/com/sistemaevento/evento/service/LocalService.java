@@ -15,8 +15,12 @@ public class LocalService {
 	public void incluirLocal(Local local) {
 		repository.save(local);
 	}
+
 	public void alterarLocal(Local local) {
 		repository.save(local);
 	}
 
+	public Local consultarDetalhe(long id) {
+		return repository.findById(id);
+	}
 }
